@@ -3,11 +3,13 @@ module.exports = {
   development: {
     hostname: "localhost",
     port: 5000,
-    packAssets: false
+    packAssets: false,
+    publicPath: "/hatjitsu"
   },
   production: {
     hostname: "hat.jit.su",
     port: 80,
-    packAssets: false
+    packAssets: false,
+    publicPath: "/hatjitsu"
   }
 };

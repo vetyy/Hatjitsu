@@ -62,7 +62,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 if (env === 'development') {
-  app.use(express.static(__dirname + '/app'));
+  app.use('/hatjitsu/', express.static(path.join(__dirname + '/app')));
   app.use(errorhandler());
 }
 
@@ -70,14 +70,14 @@ if (env === 'production') {
   var oneDay = 86400000;
   // app.use(assetsManagerMiddleware);
   app.use(compression());
-  app.use(express.static(__dirname + '/app'));
   app.use(errorhandler());
+  app.use('/hatjitsu/', express.static(__dirname + '/app'));
 }
+
 
 // Add the dynamic view helper
 app.locals.CDN = CDN();
-
-app.get('/', function(req, res) {
+app.get('/hatjitsu/', function(req, res) {
   res.render('index.ejs');
 });
 
@@ -101,7 +101,7 @@ app.get('/:id', function(req, res) {
   if (req.params.id in lobby.rooms) {
     res.render('index.ejs');
   } else {
-   res.redirect('/');  
+   res.redirect('/');
   }
 });
 
@@ -129,7 +129,7 @@ io.on('connection', function (socket) {
     // console.log("On disconnect", socket.id);
     lobby.broadcastDisconnect(socket);
   });
-  
+
   socket.on('create room', function (data, callback) {
     statsSocketMessagesReceived++;
     // console.log("on create room", socket.id, data);
