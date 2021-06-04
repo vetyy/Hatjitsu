@@ -82,7 +82,7 @@ app.get('/hatjitsu/', function(req, res) {
   res.render('index.ejs');
 });
 
-app.get('/debug_state', function(req, res) {
+app.get('/hatjitsu/debug_state', function(req, res) {
   res.json({
     "stats": {
       "connectionCount": statsConnectionCount,
@@ -98,7 +98,7 @@ app.get('/styleguide', function(req, res) {
   res.render('styleguide.ejs');
 });
 
-app.get('/:id', function(req, res) {
+app.get('/hatjitsu/:id', function(req, res) {
   if (req.params.id in lobby.rooms) {
     res.render('index.ejs');
   } else {
