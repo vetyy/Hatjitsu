@@ -20,7 +20,8 @@ var app = express();
 var server = http.createServer(app)
 var socketIO = require('socket.io');
 var io = socketIO(server, {
-  transports : ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']
+  transports : ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling'],
+  path: '/hatjitsu-ws',
 });
 var lobbyClass = require('./lib/lobby.js');
 var config = require('./config.js')[env];

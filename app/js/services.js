@@ -22,7 +22,8 @@ pokerAppServices.factory('socket', ['$rootScope', function ($rootScope) {
     reconnection : true,
     reconnectionDelay : 500,
     reconnectionAttempts: 10,
-    transports : ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']
+    transports : ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling'],
+    path: '/hatjitsu-ws',
   });
 
   $rootScope.socketMessage = null;
